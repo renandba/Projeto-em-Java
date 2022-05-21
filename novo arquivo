@@ -1,0 +1,133 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		List <Alimentos> lista1 = new ArrayList<Alimentos>();
+		List <BebidaCon> lista2 = new ArrayList<BebidaCon>();
+	int vet[] = new int [7];
+	int vet2[] = new int[6];
+	int soma = 0;
+	vet[0] = 10;
+	vet[1] = 20;
+	vet[2] = 5;
+	vet[3] = 3;
+	vet[4] = 5;
+	vet[5] = 20;
+	vet[6] = 20;
+		Scanner sc = new Scanner(System.in);
+		int numero = 0;
+		while(numero >= 0) {
+			System.out.println("\nRestaurante\n");
+			System.out.println("1-Escolha uma comida:");
+			System.out.println("2-Escolha uma bebida :");
+			System.out.println("3-Apresentar pedido :");
+			System.out.println("4-Confirmar pedido :");
+			System.out.println("5-Cancelar pedido :");
+			System.out.println("\nEscolha uma opção :");
+			numero = sc.nextInt();
+			switch(numero) {
+			case 1:
+				while(numero < 99) {
+					System.out.println("escolha o alimento :");
+					for(int i=0; i<Comidas.values().length; i++) {
+						System.out.printf("%2d - %s%n", i+1, Comidas.values()[i].toString());
+					}
+					for(int i =0;i<Comidas.values().length;i++) {
+						System.out.println((i+1)+Comidas.values()[i].getValor());
+					}
+				
+					
+					System.out.println("99 - Sair");
+					numero = sc.nextInt();
+					if(numero<99) {
+						if(numero>0 && numero<=Comidas.values().length) {
+							Comidas comidas = Comidas.values()[numero-1];
+							Alimentos s1 = new Alimentos(comidas);
+							System.out.println("o alimento  "+s1.GetComidaz()+" foi selecionado ");
+							lista1.add(s1);
+						}
+			
+					}
+				
+							
+			}
+		
+			
+					
+
+			case 2:
+				while(numero < 99) {
+					System.out.println("escolha uma bebida :");
+					for(int i=0; i<Bebidas.values().length; i++) {
+						System.out.printf("%2d - %s%n", i+1, Bebidas.values()[i].toString());
+					}
+					for(int i=0; i<Bebidas.values().length; i++) {
+						System.out.println((i+1) + Comidas.values()[i].getValor());
+					}
+					System.out.println("99 - Sair");
+					numero = sc.nextInt();
+					if(numero<99) {
+						if(numero>0 && numero<=Bebidas.values().length) {
+						Bebidas bebida = Bebidas.values()[numero-1];
+							BebidaCon s1 = new BebidaCon(bebida);
+							System.out.println("a bibida "+s1.GetBecon()+" foi selecionado ");
+							lista2.add(s1);
+						}
+					}
+							
+					
+		}
+	
+	
+	
+
+			
+
+				break;
+			case 3:
+				System.out.println("\ncomidas escolhidas :");
+		
+				for(Alimentos s: lista1) {
+					System.out.println(s.GetComidaz());
+				}
+				System.out.println("São "+lista1.size() + " comidas escolhidas ");
+				System.out.println(" o valor  total deu :" +soma);
+			System.out.println("\nbebidas pedidas ");
+			for(BebidaCon s: lista2) {
+				System.out.println(s.GetBecon());
+			
+			}
+			
+		
+		
+		    	}
+
+}       
+    
+	}     
+}
+public enum Comidas {
+	arroz10reais(10),feijao20reais(20),macarrão5reais(5),salada3reais(3),beterraba5reais(5),carne20reais(20),lasanha20reais(20);
+
+private final int valor;
+Comidas(int valorOpcao){
+valor = valorOpcao;
+}
+public int getValor(){
+return valor;
+}
+public enum Bebidas {
+	coca4reais(4),fantauva3reais(3),fantalaranja3reais(3),guarana6reais(6),pepsi5reais(5),suco3reais(3);
+	private final int valor;
+	Bebidas(int valorOpcao){
+	valor = valorOpcao;
+	}
+	public int getValor(){
+	return valor;
+	}
+	
+}
